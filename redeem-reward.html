@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redeem Reward - Rate & Win</title>
+  <link rel="stylesheet" href="css/redeem-reward.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <body>
+  <!-- ✅ Header -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+     <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </nav>
+    <div class="header-actions">
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+        <a href="register-restaurant.html">Register Restaurant</a>
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- ✅ Redeem Section -->
+  <div class="redeem-container">
+    <img src="img/trophy_8935381.png" alt="Gift Icon">
+    <h2>Reward Redeemed</h2>
+    <div class="reward-box" id="rewardToRedeem">Free Drink</div>
+    <p>Show this screen to your server to claim your drink.</p>
+    <div class="code-box" id="redeemCode">#RJ5679</div>
+    <button class="back-button" onclick="location.href='rewards.html'">&larr; Back to Rewards</button>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+
+    const rewardName = localStorage.getItem("latestReward") || "Free Drink";
+    const code = generateCode();
+
+    document.getElementById("rewardToRedeem").textContent = rewardName;
+    document.getElementById("redeemCode").textContent = `#${code}`;
+
+    function generateCode() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let result = "";
+      for (let i = 0; i < 6; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

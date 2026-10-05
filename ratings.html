@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate a Restaurant - Rate & Win</title>
+  <link rel="stylesheet" href="css/rating.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ✅ Header from homepage -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </nav>
+     <div class="header-actions">
+      <button onclick="location.href='profile.html'" class="btn">View Profile</button>
+      <button onclick="logout()" class="btn">Logout</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- ✅ Rating Form -->
+  <div class="rating-container">
+    <h2>Rate Your Dining Experience & Win</h2>
+
+    <form id="ratingForm">
+      <label for="restaurant">Select Restaurant</label>
+      <select id="restaurant" required>
+        <option value="">-- Choose a Restaurant --</option>
+        <option value="Pizza Palace">Pizza Palace</option>
+        <option value="Chop Bar Express">Chop Bar Express</option>
+        <option value="Grill Hub">Grill Hub</option>
+      </select>
+
+      <label for="foodRating">Food Rating</label>
+      <select id="foodRating" required>
+        <option value="">-- Select --</option>
+        <option value="1">1 - Poor</option>
+        <option value="2">2 - Fair</option>
+        <option value="3">3 - Good</option>
+        <option value="4">4 - Very Good</option>
+        <option value="5">5 - Excellent</option>
+      </select>
+
+      <label for="serviceRating">Service Rating</label>
+      <select id="serviceRating" required>
+        <option value="">-- Select --</option>
+        <option value="1">1 - Poor</option>
+        <option value="2">2 - Fair</option>
+        <option value="3">3 - Good</option>
+        <option value="4">4 - Very Good</option>
+        <option value="5">5 - Excellent</option>
+      </select>
+
+      <label for="cleanlinessRating">Cleanliness Rating</label>
+      <select id="cleanlinessRating" required>
+        <option value="">-- Select --</option>
+        <option value="1">1 - Poor</option>
+        <option value="2">2 - Fair</option>
+        <option value="3">3 - Good</option>
+        <option value="4">4 - Very Good</option>
+        <option value="5">5 - Excellent</option>
+      </select>
+
+      <label for="comment">Comment</label>
+      <textarea id="comment" rows="4" placeholder="Write your feedback..." required></textarea>
+
+      <button type="submit" class="btn">Submit Rating</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("ratingForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const restaurant = document.getElementById("restaurant").value;
+      const foodRating = parseInt(document.getElementById("foodRating").value);
+      const serviceRating = parseInt(document.getElementById("serviceRating").value);
+      const cleanlinessRating = parseInt(document.getElementById("cleanlinessRating").value);
+      const comment = document.getElementById("comment").value.trim();
+
+      if (!restaurant || !foodRating || !serviceRating || !cleanlinessRating || !comment) {
+        alert("Please complete all fields.");
+        return;
+      }
+
+      const newRating = {
+        restaurant,
+        foodRating,
+        serviceRating,
+        cleanlinessRating,
+        comment,
+        reviewer: JSON.parse(localStorage.getItem("loggedInUser"))?.username || "Anonymous"
+      };
+
+      const allRatings = JSON.parse(localStorage.getItem("restaurantRatings")) || [];
+      allRatings.push(newRating);
+      localStorage.setItem("restaurantRatings", JSON.stringify(allRatings));
+
+      alert("Thank you for your rating!");
+      window.location.href = "rating-confirmation.html";
+    });
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rating History - Rate & Win</title>
+  <link rel="stylesheet" href="css/rating-history.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+    <header class="header">
+    <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurant.html">Restaurants</a>
+      <a href="rewards.html" class="active">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </nav>
+    <div class="header-actions">
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+    <!--Search Bar-->
+    <section class="search-section">
+        <input type="text" placeholder="search restaurant ratings" name="search" id="searchinput">
+        <button id="searchButton">Search</button>
+    </section>
+
+  <!-- ✅ Rating History Content -->
+  <div class="history-container">
+    <h2>Your Rating History</h2>
+    <div id="ratingHistoryList" class="rating-list">
+      <!-- Ratings will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+
+    const ratings = JSON.parse(localStorage.getItem("userRatings")) || [];
+
+    function renderRatings(filter = "") {
+      const container = document.getElementById("ratingHistoryList");
+      container.innerHTML = "";
+
+      const filtered = ratings.filter(r =>
+        r.restaurant.toLowerCase().includes(filter.toLowerCase())
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<p>No ratings found.</p>';
+        return;
+      }
+
+      filtered.forEach(rating => {
+        const div = document.createElement("div");
+        div.className = "rating-card";
+        div.innerHTML = `
+          <h3>${rating.restaurant}</h3>
+          <p><strong>Food:</strong> ${rating.food}</p>
+          <p><strong>Service:</strong> ${rating.service}</p>
+          <p><strong>Cleanliness:</strong> ${rating.cleanliness}</p>
+          <p><strong>Date:</strong> ${rating.date}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    document.getElementById("searchinput").addEventListener("input", (e) => {
+      renderRatings(e.target.value);
+    });
+
+    renderRatings();
+
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurants - Rate & Win</title>
+  <link rel="stylesheet" href="css/restaurant.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+   
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+    </nav>
+    <div class="header-actions">
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+   <section class="search-section">
+        <input type="text" placeholder="Search by name, region or cuisines" name="search" id="searchinput">
+        <button id="searchButton" onclick="searchRestaurants()">Search</button>
+    </section>
+
+  
+
+  <div class="restaurant-list" id="restaurantList"></div>
+
+   
+
+  <script>
+    const restaurants = JSON.parse(localStorage.getItem("registeredRestaurants")) || [];
+
+    function displayRestaurants(list) {
+      const container = document.getElementById("restaurantList");
+      container.innerHTML = "";
+      if (list.length === 0) {
+        container.innerHTML = '<p style="text-align:center; width: 100%; color: #999;">No restaurants found.</p>';
+        return;
+      }
+
+      list.forEach((restaurant, index) => {
+        const card = document.createElement("div");
+        card.className = "restaurant-card";
+        card.innerHTML = `
+          <img src="${restaurant.image || 'img/placeholder.png'}" alt="${restaurant.name}">
+          <h3>${restaurant.name}</h3>
+          <p>${restaurant.region} - ${restaurant.cuisine}</p>
+        `;
+        card.onclick = () => {
+          window.location.href = `restaurant-detail.html?id=${index}`;
+        };
+        container.appendChild(card);
+      });
+    }
+
+    function searchRestaurants() {
+      const query = document.getElementById("searchinput").value.toLowerCase();
+      const filtered = restaurants.filter(r =>
+        r.name.toLowerCase().includes(query) ||
+        r.region.toLowerCase().includes(query) ||
+        r.cuisine.toLowerCase().includes(query)
+      );
+      displayRestaurants(filtered);
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+     function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+
+    displayRestaurants(restaurants);
+  </script>
+</body>
+</html>

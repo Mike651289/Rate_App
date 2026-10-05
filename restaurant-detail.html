@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant Details - Rate & Win</title>
+  <link rel="stylesheet" href="css/restaurant-details.css" />
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">
+      <img src="img/logo.png" alt="Rate & Win Logo" />
+      <h2>Rate & Win</h2>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </nav>
+    <div class="header-actions">
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+      <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+       <a href="register-restaurant.html">Register Restaurant</a>
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="restaurant-header">
+      <img id="restaurantImage" src="img/placeholder.png" alt="Restaurant Image">
+      <h2 id="restaurantName">Restaurant Name</h2>
+    </div>
+    <div class="details">
+      <p><strong>Country:</strong> <span id="restaurantCountry"></span></p>
+      <p><strong>Region:</strong> <span id="restaurantRegion"></span></p>
+      <p><strong>Location:</strong> <span id="restaurantLocation"></span></p>
+      <p><strong>Contact:</strong> <span id="restaurantContact"></span></p>
+      <p><strong>Cuisine:</strong> <span id="restaurantCuisine"></span></p>
+      <p><strong>Description:</strong> <span id="restaurantDescription"></span></p>
+    </div>
+    <button class="back-btn" onclick="window.history.back()">Back</button>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+
+    const restaurants = JSON.parse(localStorage.getItem("registeredRestaurants")) || [];
+    const selected = restaurants[id];
+
+    if (selected) {
+      document.getElementById("restaurantImage").src = selected.image || "img/placeholder.png";
+      document.getElementById("restaurantName").textContent = selected.name;
+      document.getElementById("restaurantCountry").textContent = selected.country;
+      document.getElementById("restaurantRegion").textContent = selected.region;
+      document.getElementById("restaurantLocation").textContent = selected.location;
+      document.getElementById("restaurantContact").textContent = selected.contact;
+      document.getElementById("restaurantCuisine").textContent = selected.cuisine;
+      document.getElementById("restaurantDescription").textContent = selected.description;
+    } else {
+      document.querySelector(".container").innerHTML = "<h2 style='text-align:center;'>Restaurant not found.</h2>";
+    }
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

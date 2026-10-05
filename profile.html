@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile - Rate & Win</title>
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">
+      <img src="img/logo.png" alt="Rate & Win Logo" />
+      <h2>Rate & Win</h2>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </nav>
+    <div class="header-actions">
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </div>
+  </header>
+
+  <div class="profile-container">
+    <input type="file" accept="image/*" id="uploadPic" style="display:none" />
+    <img id="profileImage" src="img/pic icon.png" alt="Profile Picture" class="profile-pic" onclick="document.getElementById('uploadPic').click()" />
+    <div class="info">
+      <p><strong>Username:</strong> <span id="username"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Reward Points:</strong> <span id="points"></span></p>
+      <p><strong>Total Ratings:</strong> <span id="totalRatings"></span></p>
+    </div>
+    <div class="actions">
+      <button onclick="alert('Edit profile feature coming soon')">Edit Profile</button>
+      <button onclick="alert('Change password feature coming soon')">Change Password</button>
+      <button onclick="location.href='dashboard.html'">Back to Dashboard</button>
+    </div>
+  </div>
+
+  <script>
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    const ratings = JSON.parse(localStorage.getItem("userRatings")) || [];
+
+    document.getElementById("username").textContent = loggedInUser?.username || "-";
+    document.getElementById("email").textContent = loggedInUser?.email || "-";
+    document.getElementById("points").textContent = loggedInUser?.points || 0;
+    document.getElementById("totalRatings").textContent = ratings.length;
+
+    // Load profile image if saved
+    const storedImage = localStorage.getItem("profilePic");
+    if (storedImage) {
+      document.getElementById("profileImage").src = storedImage;
+    }
+
+    // Upload profile picture
+    document.getElementById("uploadPic").addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imageUrl = e.target.result;
+          document.getElementById("profileImage").src = imageUrl;
+          localStorage.setItem("profilePic", imageUrl);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ Header Styling (copied from homepage) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  width: 40px;
+}
+
+.logo h2 {
+  font-size: 1.5rem;
+ 
+  margin: 0;
+}
+
+.desktop-nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.desktop-nav a:hover {
+  color: #fff;
+}
+
+.auth-buttons button {
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.auth-buttons button:hover {
+  background-color: #c82333;
+}
+
+/* ✅ Main Section */
+.dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+}
+
+.hero {
+  background-color: #e9f5ec;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  color: #28a745;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero button {
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  background-color: #218838;
+}
+
+/* ✅ Quick Links */
+.dashboard-links {
+  margin-top: 2rem;
+}
+
+.dashboard-links h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.link-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.link-buttons .btn {
+  padding: 0.75rem 1.25rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.link-buttons .btn:hover {
+  background-color: #0056b3;
+}
+
+/* ✅ Footer Styling */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* ... existing styles ... (keep all previous CSS) */
+
+/* ✅ Restaurant Rating Cards Section */
+.ratings-section {
+  margin-top: 3rem;
+  padding: 1rem;
+}
+
+.ratings-section h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.restaurant-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* ✅ Card Styling */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 280px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.card h4 {
+  font-size: 1.1rem;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.card p strong {
+  color: #000;
+}
+
+
+.hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+      background-color: #e63946;
+      padding: 1rem;
+      border-top: 1px solid #eee;
+    }
+
+    .mobile-nav a{
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .mobile-nav a:hover {
+      text-decoration: underline;
+    }
+    .mobile-nav button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #05011f;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .mobile-nav button:hover {
+      background-color: #121238;
+    }
+
+
+
+ @media (max-width: 768px) {
+      nav,
+      .auth-buttons {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      .mobile-nav.active {
+        display: flex;
+        
+      }
+     
+    }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Rewards - Rate & Win</title>
+  <link rel="stylesheet" href="css/rewards.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ✅ Dashboard Header with profile + logout -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+     <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html" class="active">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </nav>
+    <div class="header-actions">
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+
+      <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- ✅ Rewards Section -->
+  <div class="rewards-container">
+    <h2>Your Rewards</h2>
+    <div id="rewardsList" class="reward-list"></div>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+
+    const rewardsList = document.getElementById("rewardsList");
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    const allRatings = JSON.parse(localStorage.getItem("restaurantRatings")) || [];
+    const userRatings = allRatings.filter(r => r.reviewer === user?.username);
+
+    // Use rating count to simulate rewards earned
+    const rewardsEarned = userRatings.map((_, i) => {
+      const rewardNames = ["Free Dessert Coupon", "10% Off Next Meal", "Bonus Points", "Free Drink"];
+      return rewardNames[i % rewardNames.length];
+    });
+
+    if (rewardsEarned.length === 0) {
+      rewardsList.innerHTML = "<p>You haven't earned any rewards yet. Start rating to win!</p>";
+    } else {
+      rewardsEarned.forEach(reward => {
+        const rewardCard = document.createElement("div");
+        rewardCard.className = "reward-card";
+        rewardCard.innerHTML = `
+          <h3>${reward}</h3>
+          <button onclick="location.href='redeem-reward.html'">Redeem</button>
+        `;
+        rewardsList.appendChild(rewardCard);
+      });
+    }
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Rate & Win</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!--Visible Header (NOT blurred) -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="restaurant.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="restaurant.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+    </div>
+  </header>
+
+  <!--Blurred Homepage Content (excluding header) -->
+  <div class="homepage-blur">
+    <section class="hero">
+      <h2>Welcome to Rate & Win</h2>
+      <p>Share your restaurant experiences, earn reward points, and win exciting offers! Feedback has never been this fun and rewarding.</p>
+      <button onclick="location.href='restaurants.html'">Get started</button>
+    </section>
+
+    <section class="search-section">
+      <input type="text" placeholder="search restaurants" name="search" id="searchinput">
+      <button id="searchButton">Search</button>
+    </section>
+
+    <section class="ratings-section">
+      <h3>Recently Rated</h3>
+      <div class="restaurant-cards" id="recentRatings">
+        <!-- Cards dynamically populated -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 Rate & Win. All rights reserved</p>
+    </footer>
+  </div>
+
+  <!--Login Form -->
+  <div class="login-overlay">
+    <div class="login-container">
+      <h2>Welcome Back</h2>
+      <form id="loginForm">
+        <label for="email">Email or Username</label>
+        <input type="text" id="email" name="email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit" class="btn">Login</button>
+
+        <div class="links">
+          <a href="resetPassword.html">Forgot password?</a>
+          <br />
+          <a href="signup.html"><span style="color: #E63946;">Don't have an account? Sign up</span></a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - Rate & Win</title>
+  <link rel="stylesheet" href="css/rating-confirmation.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ✅ Header from dashboard -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+    </nav>
+   
+    <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="register-restaurant.html">Register Restaurant</a>
+      <button onclick="location.href='profile.html'">View Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- ✅ Confirmation Message -->
+  <div class="confirmation-container">
+    <h2>Thanks for your rating!</h2>
+    <p class="reward-text">You've won: <span id="rewardName">Free Dessert Coupon</span></p>
+
+    <div class="buttons">
+      <button onclick="location.href='rewards.html'" id="vr">View Rewards</button>
+      <button onclick="location.href='redeem-reward.html'" id="rr">Redeem Reward</button>
+    </div>
+  </div>
+
+  <script>
+    // Example of dynamic reward assignment
+    const rewards = [
+      "Free Dessert Coupon",
+      "10% Off Next Meal",
+      "Free Drink Voucher",
+      "Bonus Loyalty Points"
+    ];
+
+    const randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+    document.getElementById("rewardName").textContent = randomReward;
+
+    // Save to localStorage (simulate win)
+    localStorage.setItem("latestReward", randomReward);
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

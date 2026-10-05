@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Rate & Win</title>
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+
+    
+     <header class="header">
+    <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+      <img src="img/logo.png" alt="Rate & Win Logo">
+      <h2>Rate & Win</h2>
+    </div>
+     <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+    </nav>
+     <div class="auth-buttons">
+            <button onclick="location.href='login.html'">Sign in</button>
+            <button onclick="location.href='signup.html'">Sign up</button>
+        </div>
+      <div class="mobile-nav" id="mobileNav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="rewards.html">Rewards</a>
+       <button onclick="location.href='login.html'" class="btn">Sign in</button>
+            <button onclick="location.href='signup.html'" class="btn">Sign up</button>
+    </div>
+  </header>
+
+       <div class="homepage-blur">
+    <section class="hero">
+      <h2>Welcome to Rate & Win</h2>
+      <p>Share your restaurant experiences, earn reward points, and win exciting offers! Feedback has never been this fun and rewarding.</p>
+      <button onclick="location.href='restaurants.html'">Get started</button>
+    </section>
+
+    <section class="search-section">
+      <input type="text" placeholder="search restaurants" name="search" id="searchinput">
+      <button id="searchButton">Search</button>
+    </section>
+
+    <section class="ratings-section">
+      <h3>Recently Rated</h3>
+      <div class="restaurant-cards" id="recentRatings">
+        
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 Rate & Win. All rights reserved</p>
+    </footer>
+  </div>
+
+
+    <!-- Signup Form-->
+    <div class="signup-overlay">
+        <div class="signup-container">
+            <h2>Want to win exciting prizes?</h2>
+            <p>Sign up now!</p>
+            <form id="signupForm">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required />
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required />
+
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required />
+
+                <button type="submit" class="btn">Sign Up</button>
+
+                <div class="links">
+                    <a href="login.html">Already have an account? Sign in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

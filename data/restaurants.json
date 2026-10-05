@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Tree House",
+    "image": "img/Treehouse.webp",
+    "rating": 4.5,
+    "reviews": 120,
+    "latestReview": {
+      "user": "Ama Owusu",
+      "profilePic": "img/miriam.jpeg",
+      "comment": "Absolutely delicious meals!"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Fiesta Royale",
+    "image": "img/fiesta-royale.jpg",
+    "rating": 4.3,
+    "reviews": 98,
+    "latestReview": {
+      "user": "Kwame Boateng",
+      "profilePic": "img/toy.png",
+      "comment": "Great atmosphere and tasty food."
+    }
+  },
+  {
+    "id": 3,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/picture.jpg",
+      "comment": "Perfect service and clean environment!"
+    }
+  },
+  {
+    "id": 4,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/img4.jpeg",
+      "comment": "Perfect service and clean environment!"
+    }
+  },
+  {
+    "id": 5,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/img5.jpeg",
+      "comment": "Perfect service and clean environment!"
+    }
+  },
+  {
+    "id": 6,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/img7.jpeg",
+      "comment": "Perfect service and clean environment!"
+    }
+  },
+  {
+    "id": 3,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/picture.jpg",
+      "comment": "Perfect service and clean environment!"
+    }
+  },
+  {
+    "id": 3,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/picture.jpg",
+      "comment": "Perfect service and clean environment!"
+    }
+  },
+  {
+    "id": 3,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/picture.jpg",
+      "comment": "Perfect service and clean environment!"
+    }
+  },
+  {
+    "id": 3,
+    "name": "The Gold Coast",
+    "image": "img/The gold coast.jpg",
+    "rating": 4.7,
+    "reviews": 210,
+    "latestReview": {
+      "user": "Akua Serwaa",
+      "profilePic": "img/picture.jpg",
+      "comment": "Perfect service and clean environment!"
+    }
+  }
+]
